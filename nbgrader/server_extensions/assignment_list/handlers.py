@@ -61,6 +61,9 @@ class AssignmentList(LoggingConfigurable):
         lister = ExchangeFactory(config=config).List(config=config)
         assignment_dir = lister.assignment_dir
 
+        # make sure the directory exists before passing it to chdir
+        os.makedirs(assignment_dir, exist_ok=True)
+
         # now cd to the full assignment directory and load the config again
         with chdir(assignment_dir):
 
