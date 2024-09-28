@@ -160,7 +160,7 @@ export class CourseList {
 
         requestAPI<any>('formgraders')
             .then((data) => this.handle_load_list.call(this, data))
-            .catch(this.show_error);
+            .catch((e) => this.show_error(e));
     }
 
     handle_load_list(data: any){

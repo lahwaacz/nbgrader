@@ -70,12 +70,13 @@ export class CourseListWidget extends Widget {
   }
 
     checkNbGraderVersion() {
+      var warning = this.version_alert;
       let nbgrader_version = '0.9.3';
       requestAPI<any>('nbgrader_version?version='+nbgrader_version)
           .then(response => {
               if (!response['success']) {
-                  this.version_alert.textContent = response['message'];
-                  this.version_alert.hidden = false;
+                  warning.textContent = response['message'];
+                  warning.hidden = false;
               }
           })
           .catch(reason => {
